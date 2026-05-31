@@ -13,8 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - name: Install bun
+        uses: bun/action-setup@v2
         with:
           version: 8
 
@@ -22,16 +22,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
+          cache: 'bun'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: Type check
-        run: pnpm tsc --noEmit
+        run: bun tsc --noEmit
 
       - name: Run linter
-        run: pnpm lint
+        run: bun lint
 
       - name: Build
-        run: pnpm build
+        run: bun build
