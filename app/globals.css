@@ -1,0 +1,211 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Bugatti Design System - Austere Luxury */
+:root {
+  /* Colors - Pure black canvas with white typography */
+  --canvas: #000000;
+  --surface-soft: #0d0d0d;
+  --surface-card: #141414;
+  --surface-elevated: #1f1f1f;
+  --hairline: #262626;
+  --hairline-strong: #3a3a3a;
+  --ink: #ffffff;
+  --body: #cccccc;
+  --body-strong: #e6e6e6;
+  --muted: #999999;
+  --muted-soft: #666666;
+  --link: #c3d9f3;
+  --warning: #d4a017;
+  --success: #5fa657;
+  
+  /* Spacing */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+  --spacing-xxl: 64px;
+  --spacing-section: 120px;
+  
+  /* Radius */
+  --radius-none: 0px;
+  --radius-pill: 9999px;
+  
+  /* Semantic tokens */
+  --background: var(--canvas);
+  --foreground: var(--ink);
+  --card: var(--surface-card);
+  --card-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--canvas);
+  --secondary: var(--body);
+  --secondary-foreground: var(--canvas);
+  --muted-color: var(--muted);
+  --muted-foreground: var(--muted);
+  --accent: var(--link);
+  --accent-foreground: var(--canvas);
+  --border: var(--hairline);
+  --input: var(--surface-card);
+  --ring: var(--link);
+  --warning-color: var(--warning);
+  --success-color: var(--success);
+  --radius: 0px;
+}
+
+@theme inline {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: Garamond, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted-color);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-none: var(--radius-none);
+  --radius-pill: var(--radius-pill);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply bg-background;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Typography Utilities */
+@layer components {
+  .display-xl {
+    @apply text-[64px] font-normal leading-[1.1] tracking-[4px] uppercase;
+    font-family: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .display-lg {
+    @apply text-[48px] font-normal leading-[1.15] tracking-[3px] uppercase;
+    font-family: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .display-md {
+    @apply text-[32px] font-normal leading-[1.2] tracking-[2px] uppercase;
+    font-family: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .display-sm {
+    @apply text-[24px] font-normal leading-[1.3] tracking-[1.5px] uppercase;
+    font-family: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .wordmark {
+    @apply text-[14px] font-normal leading-[1.0] tracking-[6px] uppercase;
+    font-family: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .title-md {
+    @apply text-[20px] font-normal leading-[1.3] tracking-[1px] uppercase;
+    font-family: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .title-sm {
+    @apply text-[16px] font-normal leading-[1.3] tracking-[1.5px] uppercase;
+    font-family: "Saira Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .caption-uppercase {
+    @apply text-[11px] font-normal leading-[1.4] tracking-[2px] uppercase;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+  }
+  
+  .body-md {
+    @apply text-[16px] font-normal leading-[1.5] tracking-[0px];
+    font-family: Garamond, "Times New Roman", serif;
+  }
+  
+  .body-sm {
+    @apply text-[14px] font-normal leading-[1.5] tracking-[0px];
+    font-family: Garamond, "Times New Roman", serif;
+  }
+  
+  .nav-link {
+    @apply text-[12px] font-normal leading-[1.4] tracking-[2px] uppercase;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+  }
+  
+  /* Component classes */
+  .btn-primary {
+    height: 44px;
+    padding: 14px 32px;
+    border-radius: 9999px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+    transition: all 200ms;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .btn-icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 9999px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 200ms;
+    cursor: pointer;
+  }
+  
+  .btn-icon:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .text-link {
+    color: var(--link);
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+    transition: opacity 200ms;
+    cursor: pointer;
+  }
+  
+  .text-link:hover {
+    opacity: 0.8;
+  }
+  
+  .hairline {
+    border-top: 1px solid var(--hairline);
+  }
+}
