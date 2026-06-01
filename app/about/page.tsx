@@ -10,9 +10,16 @@ export const metadata = {
 };
 
 export default async function AboutPage() {
-  const experience = await prisma.experience.findMany({
-    orderBy: { startDate: "desc" },
-  });
+  let experience = [] as any[];
+  try {
+    experience = await prisma.experience.findMany({
+      orderBy: { startDate: "desc" },
+    });
+  } catch (err) {
+    // If the database is not reachable during build/prerender, fall back to empty list
+    console.warn('Could not load experience during prerender:', err);
+    experience = [];
+  }
 
   return (
     <main className="min-h-screen bg-canvas text-ink">
