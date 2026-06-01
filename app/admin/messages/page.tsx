@@ -95,7 +95,7 @@ export default async function MessagesPage() {
                     </p>
                   </div>
                   <p className="caption-uppercase text-muted mb-4">
-                    {message.subject}
+                    Contact message
                   </p>
                   <p className="body-md text-body mb-4 whitespace-pre-wrap">
                     {message.message}

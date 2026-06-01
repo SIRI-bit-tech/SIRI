@@ -58,7 +58,7 @@ export function ProjectForm({ project }: ProjectFormProps) {
     try {
       const tagsArray = tags
         .split(",")
-        .map((tag) => tag.trim())
+        .map((tag: string) => tag.trim())
         .filter(Boolean);
 
       const response = await fetch(actionUrl, {

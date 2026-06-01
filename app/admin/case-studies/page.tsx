@@ -93,7 +93,7 @@ export default async function CaseStudiesPage() {
                       Slug
                     </th>
                     <th className="text-left p-4 caption-uppercase text-muted">
-                      Client
+                      Summary
                     </th>
                     <th className="text-left p-4 caption-uppercase text-muted">
                       Featured
@@ -108,7 +108,7 @@ export default async function CaseStudiesPage() {
                     <tr key={study.id} className="border-b border-hairline">
                       <td className="p-4 body-sm">{study.title}</td>
                       <td className="p-4 body-sm text-muted">{study.slug}</td>
-                      <td className="p-4 body-sm">{study.client || "—"}</td>
+                      <td className="p-4 body-sm">{study.summary || "—"}</td>
                       <td className="p-4 body-sm">
                         {study.featured ? "Yes" : "No"}
                       </td>

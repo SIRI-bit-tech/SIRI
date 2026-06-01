@@ -93,7 +93,7 @@ export default async function SkillsPage() {
                       Category
                     </th>
                     <th className="text-left p-4 caption-uppercase text-muted">
-                      Level
+                      Proficiency
                     </th>
                     <th className="text-left p-4 caption-uppercase text-muted">
                       Actions
@@ -105,7 +105,7 @@ export default async function SkillsPage() {
                     <tr key={skill.id} className="border-b border-hairline">
                       <td className="p-4 body-sm">{skill.name}</td>
                       <td className="p-4 body-sm text-muted">{skill.category}</td>
-                      <td className="p-4 body-sm">{skill.level}/5</td>
+                      <td className="p-4 body-sm">{skill.proficiency}</td>
                       <td className="p-4 body-sm">
                         <Link
                           href={`/admin/skills/${skill.id}`}

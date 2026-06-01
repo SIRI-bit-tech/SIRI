@@ -87,7 +87,7 @@ export default async function ExperiencePage() {
                 <thead>
                   <tr className="border-b border-hairline">
                     <th className="text-left p-4 caption-uppercase text-muted">
-                      Title
+                      Role
                     </th>
                     <th className="text-left p-4 caption-uppercase text-muted">
                       Company
@@ -103,7 +103,7 @@ export default async function ExperiencePage() {
                 <tbody>
                   {experience.map((exp) => (
                     <tr key={exp.id} className="border-b border-hairline">
-                      <td className="p-4 body-sm">{exp.title}</td>
+                      <td className="p-4 body-sm">{exp.role}</td>
                       <td className="p-4 body-sm text-muted">{exp.company}</td>
                       <td className="p-4 body-sm text-muted">
                         {new Date(exp.startDate).getFullYear()} -{" "}

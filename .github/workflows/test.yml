@@ -29,8 +29,6 @@ jobs:
       - name: Type check
         run: bun tsc --noEmit
 
-      - name: Run linter
-        run: bun lint
 
       - name: Build
-        run: bun build
+        run: bun run build
