@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import { ProjectsClient } from '@/components/pages/projects-client';
 
 export const metadata: Metadata = {
-  title: 'Projects - SIRITECH | Full-Stack Portfolio',
+  title: 'Portfolio - SIRITECH | Web Developer Projects',
   description:
-    'View my portfolio of production-ready projects. From SaaS platforms to complex backend systems, explore the work I\'ve shipped.',
+    'Explore a web developer portfolio of production-ready React, Next.js, and full-stack projects built for modern businesses.',
   openGraph: {
-    title: 'Projects - SIRITECH',
+    title: 'Portfolio - SIRITECH | Web Developer Projects',
     description:
-      'Portfolio of production-ready projects built with modern technologies.',
-    url: 'https://siritech.com/projects',
+      'Explore a web developer portfolio of production-ready React, Next.js, and full-stack projects built for modern businesses.',
+    url: 'https://siridev.me/projects',
     type: 'website',
   },
 };

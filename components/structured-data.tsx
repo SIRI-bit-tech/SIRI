@@ -3,8 +3,8 @@ export function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Emuesiri Onovwiona',
-    url: 'https://siritech.com',
-    image: 'https://siritech.com/avatar.jpg',
+    url: 'https://siridev.me',
+    image: 'https://siridev.me/avatar.jpg',
     description:
       'Full-stack software engineer shipping production-ready systems',
     jobTitle: 'Full-Stack Engineer',
@@ -21,7 +21,7 @@ export function StructuredData() {
     worksFor: {
       '@type': 'Organization',
       name: 'SIRITECH',
-      url: 'https://siritech.com',
+      url: 'https://siridev.me',
     },
   };
 
@@ -38,10 +38,10 @@ export function OrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'SIRITECH',
-    url: 'https://siritech.com',
-    logo: 'https://siritech.com/logo.png',
+    url: 'https://siridev.me',
+    logo: 'https://siridev.me/logo.png',
     description:
-      'Full-stack engineer shipping production-ready systems. 3+ years building fast, scalable web applications.',
+      'Full-stack engineer shipping production-ready web development systems. 3+ years building fast, scalable applications.',
     contactPoint: {
       '@type': 'ContactPoint',
       email: 'emuesiri@siritech.com',

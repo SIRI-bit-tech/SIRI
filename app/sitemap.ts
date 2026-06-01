@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { prisma } from '@/lib/prisma';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://siritech.com';
+  const baseUrl = 'https://siridev.me';
 
   // Fetch all projects for dynamic routes
   const projects = await prisma.project.findMany({

@@ -6,39 +6,42 @@ import { ExperienceTimeline } from "@/components/sections/experience-timeline";
 import { ContactForm } from "@/components/sections/contact-form";
 
 export const metadata: Metadata = {
-  title: "SIRITECH - Full-Stack Engineer | Production-Ready Systems",
+  title: "SIRITECH | Web Developer Portfolio & Full-Stack Engineer",
   description:
-    "Full-stack engineer shipping production-ready systems. 3+ years building fast, scalable web applications across the entire stack. Based in Nigeria, remote-ready.",
+    "SIRITECH is a web developer portfolio showcasing full-stack projects, scalable applications, and modern web development services. Based in Nigeria and remote-ready.",
   openGraph: {
-    title: "SIRITECH - Full-Stack Engineer",
+    title: "SIRITECH | Web Developer Portfolio",
     description:
-      "Full-stack engineer shipping production-ready systems. Learn about my projects, experience, and approach to building.",
-    url: "https://siritech.com",
+      "Explore a portfolio of React, Next.js, and TypeScript web development projects built for startups, SaaS, and digital products.",
+    url: "https://siridev.me",
     type: "website",
     locale: "en_US",
     images: [
       {
-        url: "https://siritech.com/og-image.jpg",
+        url: "https://siridev.me/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "SIRITECH Portfolio",
+        alt: "SIRITECH Web Developer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SIRITECH - Full-Stack Engineer",
-    description: "Full-stack engineer shipping production-ready systems.",
-    images: ["https://siritech.com/og-image.jpg"],
+    title: "SIRITECH | Web Developer Portfolio",
+    description:
+      "Browse a professional web developer portfolio featuring full-stack applications, modern UI, and production-ready systems.",
+    images: ["https://siridev.me/og-image.jpg"],
   },
   keywords: [
+    "web developer portfolio",
     "full-stack engineer",
-    "software developer",
-    "web development",
-    "Nigeria",
-    "remote developer",
-    "product engineering",
-    "system architecture",
+    "React developer",
+    "Next.js portfolio",
+    "TypeScript developer",
+    "frontend developer",
+    "backend developer",
+    "software portfolio",
+    "Nigeria web developer",
   ],
 };
 

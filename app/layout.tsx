@@ -7,22 +7,22 @@ import { LenisProvider } from "@/components/lenis-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SIRITECH",
+  title: "SIRITECH | Web Developer Portfolio",
   description:
-    "Austere luxury design portfolio. Black canvas, white type, automotive photography.",
-  metadataBase: new URL("https://siritech.com"),
+    "A modern portfolio for a web developer and full-stack engineer. Showcasing production-ready React, Next.js, and Typescript applications.",
+  metadataBase: new URL("https://siridev.me"),
   openGraph: {
-    title: "SIRITECH",
+    title: "SIRITECH | Web Developer Portfolio",
     description:
-      "Austere luxury design portfolio. Black canvas, white type, automotive photography.",
+      "A modern portfolio for a web developer and full-stack engineer. Showcasing production-ready React, Next.js, and TypeScript applications.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SIRITECH",
+    title: "SIRITECH | Web Developer Portfolio",
     description:
-      "Austere luxury design portfolio. Black canvas, white type, automotive photography.",
+      "A modern portfolio for a web developer and full-stack engineer. Showcasing production-ready React, Next.js, and TypeScript applications.",
   },
 };
 
