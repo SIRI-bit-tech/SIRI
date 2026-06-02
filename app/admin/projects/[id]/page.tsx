@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ProjectForm } from "@/app/admin/projects/project-form";
 
 interface ProjectPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function EditProjectPage({ params }: ProjectPageProps) {
@@ -14,8 +14,9 @@ export default async function EditProjectPage({ params }: ProjectPageProps) {
     redirect("/admin/login");
   }
 
+  const { id } = await params;
   const project = await prisma.project.findUnique({
-    where: { id: params.id },
+    where: { id },
   });
 
   if (!project) {

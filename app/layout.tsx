@@ -17,6 +17,12 @@ export const metadata: Metadata = {
       "A modern portfolio for a web developer and full-stack engineer. Showcasing production-ready React, Next.js, and TypeScript applications.",
     type: "website",
     locale: "en_US",
+    images: ["/SIRITECH.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-icon-180x180.png",
   },
   twitter: {
     card: "summary_large_image",

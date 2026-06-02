@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
+import { SiteLogo } from "@/components/site-logo";
 
 export const dynamic = "force-dynamic";
 
@@ -62,25 +63,48 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         <Link href="/projects" className="nav-link">
           BACK
         </Link>
-        <div className="wordmark">SIRITECH</div>
+        <SiteLogo />
         <Link href="/about" className="nav-link">
           ABOUT
         </Link>
       </nav>
 
-      {/* Hero Image */}
-      <section className="pt-[56px] min-h-[60vh] flex items-center justify-center relative overflow-hidden bg-surface-soft">
-        <div className="absolute inset-0 bg-gradient-to-b from-canvas via-surface-soft to-canvas" />
+      <section className="relative min-h-screen pt-[56px] overflow-hidden">
         {images.length > 0 ? (
-          <img src={images[0]} alt={project.title} className="w-full h-full object-cover absolute inset-0" />
+          <>
+            <img
+              src={images[0]}
+              alt={project.title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/10" />
+          </>
         ) : (
-          <div className="w-full h-full absolute inset-0 bg-gradient-to-br from-surface-card to-surface-elevated" />
+          <div className="absolute inset-0 bg-gradient-to-b from-canvas via-surface-soft to-canvas" />
         )}
-        <div className="relative z-10 text-center max-w-4xl px-8">
-          <h1 className="display-xl mb-4 text-balance">{project.title}</h1>
-          <p className="body-md text-body">{project.description}</p>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-8 flex items-center justify-center min-h-screen">
+          <div className="text-center">
+            <h1 className="display-xl mb-4 text-white drop-shadow-sm">{project.title}</h1>
+            <p className="body-md text-white/90">{project.description}</p>
+          </div>
         </div>
       </section>
+
+      {images.length > 0 && (
+        <section className="py-[var(--spacing-section)] px-8 bg-canvas border-t border-hairline">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="display-md mb-[var(--spacing-xl)]">PROJECT IMAGES</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-xl)]">
+              {images.map((image, idx) => (
+                <div key={idx} className="w-full overflow-hidden rounded">
+                  <img src={image} alt={`${project.title} ${idx + 1}`} className="w-full h-56 md:h-96 object-cover" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Project Content */}
       <section className="py-[var(--spacing-section)] px-8 bg-canvas">

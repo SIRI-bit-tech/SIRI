@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Project } from '@prisma/client';
+import { SiteLogo } from '@/components/site-logo';
 
 export function ProjectsClient() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -69,7 +70,7 @@ export function ProjectsClient() {
         <Link href="/" className="nav-link">
           HOME
         </Link>
-        <div className="wordmark">SIRITECH</div>
+        <SiteLogo />
         <Link href="#contact" className="nav-link">
           CONTACT
         </Link>
@@ -130,40 +131,58 @@ export function ProjectsClient() {
             </div>
           ) : (
             <div className="grid gap-[var(--spacing-xl)]">
-              {filteredProjects.map((project) => (
-                <Link
-                  key={project.id}
-                  href={`/projects/${project.slug}`}
-                  className="group cursor-pointer"
-                >
-                  <div className="model-photo-card">
-                    {/* Photo placeholder */}
-                    <div className="w-full aspect-video bg-gradient-to-br from-surface-card to-surface-elevated mb-6" />
-                    <h3 className="display-md text-ink group-hover:opacity-75 transition-opacity">
-                      {project.title}
-                    </h3>
-                    <p className="body-md text-body mt-4">{project.description}</p>
-                    {project.tags && (
-                      <div className="flex flex-wrap gap-2 mt-6">
-                        {(() => {
-                          try {
-                            const tags = typeof project.tags === 'string' ? JSON.parse(project.tags) : project.tags;
-                            return Array.isArray(tags) ? (
-                              tags.map((tag: string) => (
+              {filteredProjects.map((project) => {
+                let firstImageUrl: string | undefined;
+                if (typeof project.images === "string") {
+                  try {
+                    const images = JSON.parse(project.images);
+                    firstImageUrl = Array.isArray(images) ? images[0] : undefined;
+                  } catch {
+                    firstImageUrl = undefined;
+                  }
+                }
+
+                return (
+                  <Link
+                    key={project.id}
+                    href={`/projects/${project.slug}`}
+                    className="group cursor-pointer"
+                  >
+                    <div className="model-photo-card">
+                      {firstImageUrl ? (
+                        <img
+                          src={firstImageUrl}
+                          alt={project.title}
+                          className="w-full h-[40vh] md:h-[60vh] object-cover mb-6"
+                        />
+                      ) : (
+                        <div className="w-full aspect-video bg-gradient-to-br from-surface-card to-surface-elevated mb-6" />
+                      )}
+                      <h3 className="display-md text-ink group-hover:opacity-75 transition-opacity">
+                        {project.title}
+                      </h3>
+                      <p className="body-md text-body mt-4">{project.description}</p>
+                      {project.tags && (
+                        <div className="flex flex-wrap gap-2 mt-6">
+                          {(() => {
+                            try {
+                              const tags = typeof project.tags === 'string' ? JSON.parse(project.tags) : project.tags;
+                              if (!Array.isArray(tags)) return null;
+                              return tags.map((tag: string) => (
                                 <span key={tag} className="caption-uppercase text-muted text-xs">
                                   {tag}
                                 </span>
-                              ))
-                            ) : null;
-                          } catch {
-                            return null;
-                          }
-                        })()}
-                      </div>
-                    )}
-                  </div>
-                </Link>
-              ))}
+                              ));
+                            } catch {
+                              return null;
+                            }
+                          })()}
+                        </div>
+                      )}
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>

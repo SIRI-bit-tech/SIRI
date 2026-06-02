@@ -3,6 +3,7 @@ import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { ExperienceTimeline } from "@/components/sections/experience-timeline";
 import { ContactForm } from "@/components/sections/contact-form";
+import { SiteLogo } from "@/components/site-logo";
 
 export const metadata = {
   title: "About - Emuesiri Onovwiona",
@@ -28,7 +29,7 @@ export default async function AboutPage() {
         <Link href="/" className="nav-link">
           HOME
         </Link>
-        <div className="wordmark">SIRITECH</div>
+        <SiteLogo />
         <Link href="#contact" className="nav-link">
           CONTACT
         </Link>

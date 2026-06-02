@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { SkillsTicker } from "@/components/sections/skills-ticker";
 import { ExperienceTimeline } from "@/components/sections/experience-timeline";
 import { ContactForm } from "@/components/sections/contact-form";
+import { SiteLogo } from "@/components/site-logo";
 
 export const metadata: Metadata = {
   title: "SIRITECH | Web Developer Portfolio & Full-Stack Engineer",
@@ -66,7 +67,7 @@ export default async function HomePage() {
         <Link href="/about" className="nav-link">
           ABOUT
         </Link>
-        <div className="wordmark">SIRITECH</div>
+        <SiteLogo />
         <Link href="#contact" className="nav-link">
           CONTACT
         </Link>
@@ -126,21 +127,41 @@ export default async function HomePage() {
         </h2>
 
         <div className="max-w-7xl mx-auto grid gap-[var(--spacing-xl)] mb-[var(--spacing-xl)]">
-          {projects.map((project) => (
-            <Link
-              key={project.id}
-              href={`/projects/${project.slug}`}
-              className="group cursor-pointer"
-            >
-              <div className="model-photo-card">
-                <div className="w-full aspect-video bg-gradient-to-br from-surface-card to-surface-elevated mb-6" />
-                <h3 className="display-md text-ink group-hover:opacity-75 transition-opacity">
-                  {project.title}
-                </h3>
-                <p className="body-md text-body mt-4">{project.description}</p>
-              </div>
-            </Link>
-          ))}
+          {projects.map((project) => {
+            let firstImageUrl: string | undefined;
+            if (typeof project.images === "string") {
+              try {
+                const images = JSON.parse(project.images);
+                firstImageUrl = Array.isArray(images) ? images[0] : undefined;
+              } catch {
+                firstImageUrl = undefined;
+              }
+            }
+
+            return (
+              <Link
+                key={project.id}
+                href={`/projects/${project.slug}`}
+                className="group cursor-pointer"
+              >
+                <div className="model-photo-card">
+                  {firstImageUrl ? (
+                    <img
+                      src={firstImageUrl}
+                      alt={project.title}
+                      className="w-full h-[40vh] md:h-[60vh] object-cover mb-6"
+                    />
+                  ) : (
+                    <div className="w-full aspect-video bg-gradient-to-br from-surface-card to-surface-elevated mb-6" />
+                  )}
+                  <h3 className="display-md text-ink group-hover:opacity-75 transition-opacity">
+                    {project.title}
+                  </h3>
+                  <p className="body-md text-body mt-4">{project.description}</p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
         <div className="flex justify-center">
