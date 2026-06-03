@@ -53,65 +53,65 @@ export function NewCaseStudyForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl">
       <div className="grid gap-6 sm:grid-cols-2">
-        <label className="space-y-2">
-          <span className="text-sm font-semibold text-slate-900">Title</span>
+        <div>
+          <label className="block text-sm font-medium mb-2">Title</label>
           <input
             value={title}
             onChange={(event) => setTitle(event.target.value)}
-            className="input"
+            className="w-full rounded border border-slate-300 px-4 py-3"
             required
           />
-        </label>
-        <label className="space-y-2">
-          <span className="text-sm font-semibold text-slate-900">Slug</span>
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-2">Slug</label>
           <input
             value={slug}
             onChange={(event) => setSlug(event.target.value)}
-            className="input"
+            className="w-full rounded border border-slate-300 px-4 py-3"
             required
           />
-        </label>
+        </div>
       </div>
 
-      <label className="space-y-2">
-        <span className="text-sm font-semibold text-slate-900">Summary</span>
+      <div>
+        <label className="block text-sm font-medium mb-2">Summary</label>
         <textarea
           value={summary}
           onChange={(event) => setSummary(event.target.value)}
-          className="input min-h-[120px]"
+          className="w-full rounded border border-slate-300 px-4 py-3 min-h-[120px]"
           required
         />
-      </label>
+      </div>
 
-      <label className="space-y-2">
-        <span className="text-sm font-semibold text-slate-900">Body</span>
+      <div>
+        <label className="block text-sm font-medium mb-2">Body</label>
         <textarea
           value={body}
           onChange={(event) => setBody(event.target.value)}
-          className="input min-h-[180px]"
+          className="w-full rounded border border-slate-300 px-4 py-3 min-h-[180px]"
           required
         />
-      </label>
+      </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
-        <label className="space-y-2">
-          <span className="text-sm font-semibold text-slate-900">Tags</span>
+        <div>
+          <label className="block text-sm font-medium mb-2">Tags</label>
           <input
             value={tags}
             onChange={(event) => setTags(event.target.value)}
-            className="input"
+            className="w-full rounded border border-slate-300 px-4 py-3"
             placeholder="Comma separated"
           />
-        </label>
-        <label className="space-y-2">
-          <span className="text-sm font-semibold text-slate-900">Cover Image URL</span>
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-2">Cover Image URL</label>
           <input
             value={coverImage}
             onChange={(event) => setCoverImage(event.target.value)}
-            className="input"
+            className="w-full rounded border border-slate-300 px-4 py-3"
             placeholder="Optional URL"
           />
-        </label>
+        </div>
       </div>
 
       <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
@@ -120,24 +120,28 @@ export function NewCaseStudyForm() {
             type="checkbox"
             checked={featured}
             onChange={(event) => setFeatured(event.target.checked)}
-            className="h-4 w-4 rounded border-slate-400 text-indigo-600 focus:ring-indigo-500"
+            className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
           />
           <span className="text-sm">Featured</span>
         </label>
-        <label className="space-y-2 sm:flex-1">
-          <span className="text-sm font-semibold text-slate-900">Order</span>
+        <div className="sm:flex-1">
+          <label className="block text-sm font-medium mb-2">Order</label>
           <input
             type="number"
             value={order}
             onChange={(event) => setOrder(Number(event.target.value))}
-            className="input"
+            className="w-full rounded border border-slate-300 px-4 py-3"
             min={0}
           />
-        </label>
+        </div>
       </div>
 
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
-      <button type="submit" className="btn-primary" disabled={isSaving}>
+      <button
+        type="submit"
+        disabled={isSaving}
+        className="mt-4 inline-flex items-center justify-center rounded bg-ink px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
+      >
         {isSaving ? "Saving..." : "Create Case Study"}
       </button>
     </form>
