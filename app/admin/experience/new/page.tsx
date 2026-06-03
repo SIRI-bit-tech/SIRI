@@ -2,7 +2,6 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { NewExperienceForm } from "@/components/admin/new-experience-form";
-import { LogoutButton } from "@/components/admin/logout-button";
 
 export default async function NewExperiencePage() {
   const session = await auth();
@@ -16,7 +15,6 @@ export default async function NewExperiencePage() {
         <Link href="/admin/dashboard" className="wordmark">
           SIRITECH ADMIN
         </Link>
-        <LogoutButton />
       </nav>
 
       <div className="flex">
@@ -71,9 +69,9 @@ export default async function NewExperiencePage() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h1 className="display-lg">New Experience</h1>
-              <p className="body-md text-muted mt-2">Add a new experience entry.</p>
+              <p className="text-muted mt-2">Add a new experience entry.</p>
             </div>
-            <Link href="/admin/experience" className="btn-secondary">
+            <Link href="/admin/experience" className="text-link">
               Back to experience
             </Link>
           </div>

@@ -2,7 +2,6 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { NewSkillForm } from "@/components/admin/new-skill-form";
-import { LogoutButton } from "@/components/admin/logout-button";
 
 export default async function NewSkillPage() {
   const session = await auth();
@@ -16,7 +15,6 @@ export default async function NewSkillPage() {
         <Link href="/admin/dashboard" className="wordmark">
           SIRITECH ADMIN
         </Link>
-        <LogoutButton />
       </nav>
 
       <div className="flex">
@@ -71,9 +69,9 @@ export default async function NewSkillPage() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h1 className="display-lg">New Skill</h1>
-              <p className="body-md text-muted mt-2">Add a new skill to the admin panel.</p>
+              <p className="text-muted mt-2">Add a new skill to the admin panel.</p>
             </div>
-            <Link href="/admin/skills" className="btn-secondary">
+            <Link href="/admin/skills" className="text-link">
               Back to skills
             </Link>
           </div>

@@ -2,7 +2,6 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { NewCaseStudyForm } from "@/components/admin/new-case-study-form";
-import { LogoutButton } from "@/components/admin/logout-button";
 
 export default async function NewCaseStudyPage() {
   const session = await auth();
@@ -16,7 +15,6 @@ export default async function NewCaseStudyPage() {
         <Link href="/admin/dashboard" className="wordmark">
           SIRITECH ADMIN
         </Link>
-        <LogoutButton />
       </nav>
 
       <div className="flex">
@@ -71,9 +69,9 @@ export default async function NewCaseStudyPage() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h1 className="display-lg">New Case Study</h1>
-              <p className="body-md text-muted mt-2">Create a new case study entry.</p>
+              <p className="text-muted mt-2">Create a new case study entry.</p>
             </div>
-            <Link href="/admin/case-studies" className="btn-secondary">
+            <Link href="/admin/case-studies" className="text-link">
               Back to case studies
             </Link>
           </div>
