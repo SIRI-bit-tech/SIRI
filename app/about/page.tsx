@@ -12,10 +12,17 @@ export const metadata = {
 
 export default async function AboutPage() {
   let experience = [] as any[];
+  let caseStudies = [] as any[];
   try {
     experience = await prisma.experience.findMany({
       orderBy: { startDate: "desc" },
     });
+    try {
+      caseStudies = await prisma.caseStudy.findMany({ orderBy: { order: "asc" } });
+    } catch (err) {
+      console.warn('Could not load case studies during prerender:', err);
+      caseStudies = [];
+    }
   } catch (err) {
     // If the database is not reachable during build/prerender, fall back to empty list
     console.warn('Could not load experience during prerender:', err);
@@ -127,6 +134,30 @@ export default async function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="display-lg mb-[var(--spacing-xl)]">EXPERIENCE</h2>
             <ExperienceTimeline experience={experience} />
+          </div>
+        </section>
+      )}
+
+      {/* Case Studies */}
+      {caseStudies.length > 0 && (
+        <section className="py-[var(--spacing-section)] px-8 bg-canvas border-t border-hairline">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="display-lg mb-[var(--spacing-xl)]">CASE STUDIES</h2>
+            <div className="grid gap-[var(--spacing-xl)]">
+              {caseStudies.map((cs) => (
+                <Link key={cs.id} href={`/case-studies/${cs.slug}`} className="group">
+                  <div className="model-photo-card">
+                    {cs.coverImage ? (
+                      <img src={cs.coverImage} alt={cs.title} className="w-full h-[40vh] md:h-[60vh] object-cover mb-6" />
+                    ) : (
+                      <div className="w-full aspect-video bg-gradient-to-br from-surface-card to-surface-elevated mb-6" />
+                    )}
+                    <h3 className="display-md text-ink group-hover:opacity-75 transition-opacity">{cs.title}</h3>
+                    <p className="body-md text-body mt-4">{cs.summary}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       )}
