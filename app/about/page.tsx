@@ -147,10 +147,8 @@ export default async function AboutPage() {
               {caseStudies.map((cs) => (
                 <Link key={cs.id} href={`/case-studies/${cs.slug}`} className="group">
                   <div className="model-photo-card">
-                    {cs.coverImage ? (
+                    {cs.coverImage && (
                       <img src={cs.coverImage} alt={cs.title} className="w-full h-[40vh] md:h-[60vh] object-cover mb-6" />
-                    ) : (
-                      <div className="w-full aspect-video bg-gradient-to-br from-surface-card to-surface-elevated mb-6" />
                     )}
                     <h3 className="display-md text-ink group-hover:opacity-75 transition-opacity">{cs.title}</h3>
                     <p className="body-md text-body mt-4">{cs.summary}</p>

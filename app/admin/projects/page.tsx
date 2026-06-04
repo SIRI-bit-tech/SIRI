@@ -125,7 +125,7 @@ export default async function ProjectsPage() {
                         >
                           Edit
                         </Link>
-                        <DeleteButton projectId={project.id} />
+                        <DeleteButton id={project.id} />
                       </td>
                     </tr>
                   ))}

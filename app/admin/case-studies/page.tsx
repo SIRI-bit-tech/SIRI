@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { LogoutButton } from "@/components/admin/logout-button";
+import { DeleteButton } from "@/components/admin/delete-button";
 
 export default async function CaseStudiesPage() {
   const session = await auth();
@@ -115,10 +116,11 @@ export default async function CaseStudiesPage() {
                       <td className="p-4 body-sm">
                         <Link
                           href={`/admin/case-studies/${study.id}`}
-                          className="text-link hover:opacity-75"
+                          className="text-link hover:opacity-75 mr-4"
                         >
                           Edit
                         </Link>
+                        <DeleteButton id={study.id} type="case-studies" />
                       </td>
                     </tr>
                   ))}

@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [projects, skills, experience] = await Promise.all([
+  const [projects, skills, experience, caseStudies] = await Promise.all([
     prisma.project.findMany({
       where: { featured: true },
       orderBy: { order: "asc" },
@@ -57,6 +57,10 @@ export default async function HomePage() {
     }),
     prisma.experience.findMany({
       orderBy: { startDate: "desc" },
+    }),
+    prisma.caseStudy.findMany({
+      where: { featured: true },
+      orderBy: { order: "asc" },
     }),
   ]);
 
@@ -170,6 +174,39 @@ export default async function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* Featured Case Studies */}
+      {caseStudies.length > 0 && (
+        <section className="py-[var(--spacing-section)] px-8 bg-canvas border-t border-hairline">
+          <h2 className="display-lg text-center mb-[var(--spacing-section)] text-balance">
+            FEATURED CASE STUDIES
+          </h2>
+
+          <div className="max-w-7xl mx-auto grid gap-[var(--spacing-xl)] mb-[var(--spacing-xl)]">
+            {caseStudies.map((study) => (
+              <Link
+                key={study.id}
+                href={`/case-studies/${study.slug}`}
+                className="group cursor-pointer"
+              >
+                <div className="model-photo-card">
+                  {study.coverImage && (
+                    <img
+                      src={study.coverImage}
+                      alt={study.title}
+                      className="w-full h-[40vh] md:h-[60vh] object-cover mb-6"
+                    />
+                  )}
+                  <h3 className="display-md text-ink group-hover:opacity-75 transition-opacity">
+                    {study.title}
+                  </h3>
+                  <p className="body-md text-body mt-4">{study.summary}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Experience Timeline */}
       <section className="py-[var(--spacing-section)] px-8 bg-surface-soft border-t border-hairline">

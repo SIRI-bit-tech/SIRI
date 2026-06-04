@@ -14,26 +14,33 @@ import {
   AlertDialogCancel,
 } from "@/components/ui/alert-dialog";
 
-export function DeleteButton({ projectId }: { projectId: string }) {
+interface DeleteButtonProps {
+  id: string;
+  type?: "projects" | "case-studies";
+}
+
+export function DeleteButton({ id, type = "projects" }: DeleteButtonProps) {
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState(false);
 
   async function handleDelete() {
     setIsDeleting(true);
     try {
-      const res = await fetch(`/api/admin/projects/${projectId}`, { method: "DELETE" });
+      const res = await fetch(`/api/admin/${type}/${id}`, { method: "DELETE" });
       if (!res.ok) {
         const data = await res.json();
         alert(data?.error || "Failed to delete");
         setIsDeleting(false);
         return;
       }
-      router.push("/admin/projects");
+      router.refresh();
     } catch (err) {
-      alert("Failed to delete project.");
+      alert("Failed to delete.");
       setIsDeleting(false);
     }
   }
+
+  const label = type === "projects" ? "project" : "case study";
 
   return (
     <AlertDialog>
@@ -43,9 +50,9 @@ export function DeleteButton({ projectId }: { projectId: string }) {
 
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete project</AlertDialogTitle>
+          <AlertDialogTitle>Delete {label}</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. Are you sure you want to delete this project?
+            This action cannot be undone. Are you sure you want to delete this {label}?
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
