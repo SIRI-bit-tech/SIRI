@@ -3,6 +3,29 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+function formatCaseStudyBody(body: string) {
+  const escapeHtml = (text: string) =>
+    text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+
+  const withBold = escapeHtml(body).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  return withBold
+    .split(/\n{2,}/)
+    .map((paragraph) =>
+      paragraph
+        .split(/\n/)
+        .map((line) => line.trim())
+        .filter(Boolean)
+        .join("<br />")
+    )
+    .map((paragraph) => `<p>${paragraph}</p>`)
+    .join("");
+}
+
 export function NewCaseStudyForm() {
   const router = useRouter();
   const [title, setTitle] = useState("");
@@ -89,7 +112,16 @@ export function NewCaseStudyForm() {
           value={body}
           onChange={(event) => setBody(event.target.value)}
           className="w-full rounded border border-slate-300 px-4 py-3 min-h-[180px]"
+          placeholder="Use **bold** for strong text and blank lines for new paragraphs."
           required
+        />
+      </div>
+
+      <div className="rounded border border-slate-700 bg-surface-card p-4 text-sm text-body text-white">
+        <div className="mb-2 font-semibold">Body preview</div>
+        <div
+          className="max-w-full whitespace-pre-wrap leading-7"
+          dangerouslySetInnerHTML={{ __html: formatCaseStudyBody(body) }}
         />
       </div>
 
